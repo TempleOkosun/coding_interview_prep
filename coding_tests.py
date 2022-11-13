@@ -1,4 +1,6 @@
 import time
+import random
+
 
 # 1.
 # Reversing Strings
@@ -46,7 +48,7 @@ print('----------------------', "STRING PALINDROME", '-----------------------')
 input_str = "Doctor"
 print("Input is: ", input_str, '|', " The Result is: ", palindrome(input_str))
 input_str = "wow"
-print("Input is: ", input_str, '|', " The Result is: ", palindrome(input_str),  "\n")
+print("Input is: ", input_str, '|', " The Result is: ", palindrome(input_str), "\n")
 
 
 # 3
@@ -237,7 +239,7 @@ print("Inputs is:", l, '|', 'The Result is:', capitalize(sentence), '\n')
 # 10
 def pyramids(n):
     for i in range(n):
-        print(' ' * (n-i-1) + (str('#') + ' ') * (i + 1))
+        print(' ' * (n - i - 1) + (str('#') + ' ') * (i + 1))
 
 
 print('----------------------', "PYRAMID ", '------------')
@@ -292,17 +294,17 @@ def spiral_matrix(matrix):
             result.append(matrix[topRow][i])
         topRow += 1
 
-        for i in range(topRow, btmRow+1):
+        for i in range(topRow, btmRow + 1):
             result.append(matrix[i][rightCol])
         rightCol -= 1
 
         if topRow <= btmRow:
-            for i in range(rightCol, leftCol-1, -1):
+            for i in range(rightCol, leftCol - 1, -1):
                 result.append(matrix[btmRow][i])
         btmRow -= 1
 
         if leftCol <= rightCol:
-            for i in range(btmRow, topRow-1, -1):
+            for i in range(btmRow, topRow - 1, -1):
                 result.append(matrix[i][leftCol])
         leftCol += 1
 
@@ -335,8 +337,9 @@ fib1_time = tic_fib1_b - tic_fib1_a
 fib1_time = round(fib1_time, 4)
 print("\n")
 
-
 fibonacci_cache = {}
+
+
 def fib_manual_mem(n):
     if n in fibonacci_cache:
         ans = fibonacci_cache[n]
@@ -351,12 +354,11 @@ def fib_manual_mem(n):
 print('\n', "Fibonacci Function 2- Manual Memoization")
 n = 50
 tic_fib2_a = time.perf_counter()
-for i in range(n+1):
+for i in range(n + 1):
     print(i, '=', fib_manual_mem(i))
 tic_fib2_b = time.perf_counter()
 fib2_time = tic_fib2_b - tic_fib2_a
 fib2_time = round(fib2_time, 4)
-
 
 #
 from functools import lru_cache
@@ -374,7 +376,7 @@ def fib_inbuilt_mem(n):
 print("Fibonacci Function 3- Inbuilt Memoization")
 n = 50
 tic_fib3_a = time.perf_counter()
-for i in range(n+1):
+for i in range(n + 1):
     print(i, '=', fib_inbuilt_mem(i))
 tic_fib3_b = time.perf_counter()
 fib3_time = tic_fib3_b - tic_fib3_a
@@ -382,15 +384,18 @@ fib3_time = round(fib3_time, 4)
 print("\n")
 
 print("It took Fibonacci Recursive function:", fib1_time, 'for n:', n)
-print("It took Fibonacci Manual Memoized function:", fib2_time, 'for n:', n, 'time difference:', round(fib2_time - fib1_time), 4)
+print("It took Fibonacci Manual Memoized function:", fib2_time, 'for n:', n, 'time difference:',
+      round(fib2_time - fib1_time), 4)
 print("It took Fibonacci In-built Memoized function:", fib3_time, 'for n:', n, 'time difference:',
       fib3_time - fib2_time, '|', fib3_time - fib1_time)
 
 
+def is_subset(l1, l2):
+    temp = dict([(e, 1) for e in l2])
+    for e in l1:
+        if not (e in temp):
+            return False
+    return True
 
 
-
-
-
-
-
+print(is_subset([1, 2, 4, 7, "a"], ["b", "a", 1, 2, 4, 7]))
