@@ -399,3 +399,13 @@ def is_subset(l1, l2):
 
 
 print(is_subset([1, 2, 4, 7, "a"], ["b", "a", 1, 2, 4, 7]))
+
+
+def reverse_matrix(m):
+    m.reverse()
+    for row in m:
+        row.reverse()
+
+        m = [[1, 2], [3, 4], [5, 6]]
+        reverse_matrix(m)
+        print(m)
